@@ -7,36 +7,52 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+:root {
+  /* Brand Colors - AutoWash Pro Blue Theme */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+  /* Primary - Blue gradient system */
+  --primary: 221 83% 39%;
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 221 83% 33%;
+  --primary-light: 221 91% 63%;
+  --primary-lighter: 214 95% 93%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+  /* Secondary - Neutral tones */
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+  /* Success - Green for confirmations */
+  --success: 160 84% 39%;
+  --success-light: 152 76% 91%;
+  --success-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+  /* Muted - Subtle backgrounds */
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+  /* Accent - Highlight color */
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+  /* Destructive - Danger states */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+  /* Borders & Inputs */
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 39%;
+
+  /* Radius */
+  --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +72,40 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 221 91% 63%;
+    --primary-foreground: 222 47% 11%;
+    --primary-hover: 221 91% 70%;
+    --primary-light: 221 91% 63%;
+    --primary-lighter: 221 83% 23%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --success: 160 84% 39%;
+    --success-light: 160 84% 25%;
+    --success-foreground: 0 0% 100%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 221 91% 63%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +124,65 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button Variant */
+  .btn-hero {
+    @apply bg-gradient-to-br from-primary to-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* Glass Card Effect */
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-sm border border-border shadow-lg;
+  }
+
+  /* Animated Gradient Background */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-background via-primary-lighter/30 to-background;
+  }
+
+  /* Pulse Animation for Status */
+  .status-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Smooth Fade In */
+  .fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Service Card Hover */
+  .service-card {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
 }
